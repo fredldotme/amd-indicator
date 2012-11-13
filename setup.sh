@@ -23,6 +23,7 @@ else
 	then
     		echo "sudoer already set up"
 	else
+		echo "" >> /etc/sudoers
 		echo $SUDOERSTRING >> /etc/sudoers
 	fi
 fi
