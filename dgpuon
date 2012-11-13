@@ -1,0 +1,5 @@
+#!/bin/bash
+amdconfig --px-dgpu
+rm /etc/ld.so.conf.d/multiarchfix.conf
+ldconfig
+pkill X

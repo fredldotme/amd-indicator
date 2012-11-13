@@ -13,7 +13,7 @@ class AMDIndicator:
                                            appindicator.CATEGORY_APPLICATION_STATUS)
 	self.ind.set_status(appindicator.STATUS_ACTIVE)
 	self.ind.set_attention_icon("indicator-messages-new")
-	self.ind.set_icon_theme_path(os.path.dirname(sys.argv[0]))
+	self.ind.set_icon_theme_path("/usr/lib/amdindicator/")
 	self.isIntegrated = self.checkIntegrated()
 	self.ind.set_icon('intel')
 	if not self.isIntegrated:
@@ -43,15 +43,14 @@ class AMDIndicator:
 	    os.system("gconftool-2 --type Boolean --set /apps/compiz-1/plugins/opengl/screen0/options/sync_to_vblank False")
 
     def switch(self, dude):
+	self.showRebootDialog()
 	if self.isIntegrated:
 	    self.switchToDiscrete()
 	else:
 	    self.switchToIntegrated()
-	self.showRebootDialog()
 	
 
     def showRebootDialog(self):
-	#message = "The laptop will restart now."
 	message = "The X server will restart now."
 	dialog = gtk.MessageDialog(None, gtk.DIALOG_MODAL, gtk.MESSAGE_INFO,
                                        gtk.BUTTONS_NONE, message)
@@ -60,8 +59,6 @@ class AMDIndicator:
 	dialog.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
 	response = dialog.run()
 	dialog.destroy()
-	#os.system("sudo reboot")
-	os.system("sudo pkill X")
 
     def ignore(*args):
 	return gtk.TRUE
@@ -79,17 +76,10 @@ class AMDIndicator:
 	return out
 
     def switchToIntegrated(self):
-	os.system("sudo amdconfig --px-igpu")
-	os.system("sudo sh -c 'echo \'/usr/lib/x86_64-linux-gnu/mesa\' >> /etc/ld.so.conf.d/multiarchfix.conf'")
-	os.system("sudo sh -c 'echo \'/usr/lib/i386-linux-gnu/mesa\' >> /etc/ld.so.conf.d/multiarchfix.conf'")
-	os.system("sudo chown root:root /etc/ld.so.conf.d/multiarch.conf")
-	os.system("sudo chmod 644 /etc/ld.so.conf.d/multiarch.conf")
-	os.system("sudo ldconfig")
+	os.system("sudo /usr/lib/amdindicator/igpuon")
 
     def switchToDiscrete(self):
-	os.system("sudo amdconfig --px-dgpu")
-	os.system("sudo rm /etc/ld.so.conf.d/multiarchfix.conf")
-	os.system("sudo ldconfig")
+	os.system("sudo /usr/lib/amdindicator/dgpuon")
 
     def main(self):
         gtk.main()

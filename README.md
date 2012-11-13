@@ -12,16 +12,8 @@ a problem running 32 bit OpenGL applications/games on the integrated GPU with fg
 How to install
 =============
 
-# Copy 11switchable to Xorgs Xsession.d folder (This saves you having to modify 10fglrx after installation)
-sudo cp 11switchable /etc/X11/Xsession.d/
+ #Make the setup.sh file executable and run it using sudo
+ chmod a+x setup.sh
+ sudo ./setup.sh
 
-# Add a new group or user 
-sudo groupadd amdindicator
-
-# Change the group of the Python script
-sudo chown $USER:amdindicator amd-indicator
-
-# Add the following line to the /etc/sudoers file
-%amdindicator ALL=NOPASSWD: /bin/rm, /bin/chown, /bin/chmod, /bin/sh, /sbin/ldconfig, /usr/bin/amdconfig
-
-# Finally, add the indicator to your start programs
+Now add the amd-indicator script to your startup applications
