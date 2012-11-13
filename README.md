@@ -12,6 +12,9 @@ a problem running 32 bit OpenGL applications/games on the integrated GPU with fg
 How to install
 =============
 
+# Copy 11switchable to Xorgs Xsession.d folder (This saves you having to modify 10fglrx after installation)
+cp 11switchable /etc/X11/Xsession.d/
+
 # Add a new group or user 
 sudo groupadd amdindicator
 
