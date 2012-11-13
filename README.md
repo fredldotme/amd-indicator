@@ -13,7 +13,8 @@ How to install
 =============
 
  #Make the setup.sh file executable and run it using sudo
- chmod a+x setup.sh
- sudo ./setup.sh
+
+chmod a+x setup.sh
+sudo ./setup.sh
 
 Now add the amd-indicator script to your startup applications
