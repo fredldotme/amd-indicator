@@ -13,7 +13,7 @@ How to install
 =============
 
 # Copy 11switchable to Xorgs Xsession.d folder (This saves you having to modify 10fglrx after installation)
-cp 11switchable /etc/X11/Xsession.d/
+sudo cp 11switchable /etc/X11/Xsession.d/
 
 # Add a new group or user 
 sudo groupadd amdindicator
