@@ -1,0 +1,100 @@
+#!/usr/bin/env python
+import gtk
+import appindicator
+import os
+import commands
+import gtk
+import sys
+
+class AMDIndicator:
+    def __init__(self):
+	self.ind = appindicator.Indicator("AMD Indicator",
+                                           "indicator-messages",
+                                           appindicator.CATEGORY_APPLICATION_STATUS)
+	self.ind.set_status(appindicator.STATUS_ACTIVE)
+	self.ind.set_attention_icon("indicator-messages-new")
+	#self.ind.set_icon_theme_path("/home/alfred/Programme/AMDIndicator")
+	self.ind.set_icon_theme_path(os.path.dirname(sys.argv[0]))
+	self.isIntegrated = self.checkIntegrated()
+	self.ind.set_icon('intel')
+	if not self.isIntegrated:
+	    self.ind.set_icon('amd')
+	self.setAdditionals()
+        self.menu_setup()
+        self.ind.set_menu(self.menu)
+
+    def menu_setup(self):
+        self.menu = gtk.Menu()
+	self.info_item = gtk.MenuItem(self.rendererString())
+	self.info_item.set_sensitive(False)
+	self.info_item.show()
+	self.seperator_item = gtk.SeparatorMenuItem()
+	self.seperator_item.show()
+	self.switch_item = gtk.MenuItem("Switch graphics ...")
+        self.switch_item.connect("activate", self.switch)
+        self.switch_item.show()
+	self.menu.append(self.info_item)
+	self.menu.append(self.seperator_item)
+	self.menu.append(self.switch_item)
+
+    def setAdditionals(self):
+	if self.isIntegrated:
+	    os.system("gconftool-2 --type Boolean --set /apps/compiz-1/plugins/opengl/screen0/options/sync_to_vblank True")
+	else:
+	    os.system("gconftool-2 --type Boolean --set /apps/compiz-1/plugins/opengl/screen0/options/sync_to_vblank False")
+
+    def switch(self, dude):
+	if self.isIntegrated:
+	    self.switchToDiscrete()
+	else:
+	    self.switchToIntegrated()
+	self.showRebootDialog()
+	
+
+    def showRebootDialog(self):
+	#message = "The laptop will restart now."
+	message = "The X server will restart now."
+	dialog = gtk.MessageDialog(None, gtk.DIALOG_MODAL, gtk.MESSAGE_INFO,
+                                       gtk.BUTTONS_NONE, message)
+	dialog.set_deletable(False)
+	dialog.connect('delete_event', self.ignore)
+	dialog.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
+	response = dialog.run()
+	dialog.destroy()
+	#os.system("sudo reboot")
+	os.system("sudo pkill X")
+
+    def ignore(*args):
+	return gtk.TRUE
+
+    def checkIntegrated(self):
+	stat, out = commands.getstatusoutput("aticonfig --pxl")
+	if "Discrete" in out:
+	    return False
+	else:
+	    return True
+
+    def rendererString(self):
+	stat, out = commands.getstatusoutput('glxinfo | grep "OpenGL renderer string"')
+	out = out.replace("OpenGL renderer string", "Using")
+	return out
+
+    def switchToIntegrated(self):
+	os.system("sudo aticonfig --px-igpu")
+	os.system("sudo sh -c 'echo \'/usr/lib/x86_64-linux-gnu/mesa\' >> /etc/ld.so.conf.d/multiarchfix.conf'")
+	os.system("sudo sh -c 'echo \'/usr/lib/i386-linux-gnu/mesa\' >> /etc/ld.so.conf.d/multiarchfix.conf'")
+	os.system("sudo chown root:root /etc/ld.so.conf.d/multiarch.conf")
+	os.system("sudo chmod 644 /etc/ld.so.conf.d/multiarch.conf")
+	os.system("sudo ldconfig")
+
+    def switchToDiscrete(self):
+	os.system("sudo aticonfig --px-dgpu")
+	os.system("sudo rm /etc/ld.so.conf.d/multiarchfix.conf")
+	os.system("sudo ldconfig")
+
+    def main(self):
+        gtk.main()
+
+if __name__ == "__main__":
+    indicator = AMDIndicator()
+    indicator.main()
