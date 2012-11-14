@@ -1,9 +1,8 @@
 #!/bin/bash
 amdconfig --px-igpu
-echo "/usr/lib/x86_64-linux-gnu/mesa" >> /etc/ld.so.conf.d/multiarchfix.conf
-echo "/usr/lib/i386-linux-gnu/mesa" >> /etc/ld.so.conf.d/multiarchfix.conf
-chown root:root /etc/ld.so.conf.d/multiarch.conf
-chmod 644 /etc/ld.so.conf.d/multiarch.conf
+echo "/usr/lib/i386-linux-gnu/mesa" > /etc/ld.so.conf.d/multiarchfix.conf
+chown root:root /etc/ld.so.conf.d/multiarchfix.conf
+chmod 644 /etc/ld.so.conf.d/multiarchfix.conf
 ldconfig
 sync
 pkill X
