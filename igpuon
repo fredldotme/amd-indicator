@@ -5,4 +5,5 @@ echo "/usr/lib/i386-linux-gnu/mesa" >> /etc/ld.so.conf.d/multiarchfix.conf
 chown root:root /etc/ld.so.conf.d/multiarch.conf
 chmod 644 /etc/ld.so.conf.d/multiarch.conf
 ldconfig
+sync
 pkill X

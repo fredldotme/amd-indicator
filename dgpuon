@@ -1,5 +1,6 @@
 #!/bin/bash
 amdconfig --px-dgpu
-rm /etc/ld.so.conf.d/multiarchfix.conf
+rm -f /etc/ld.so.conf.d/multiarchfix.conf
 ldconfig
+sync
 pkill X
