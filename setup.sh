@@ -4,7 +4,10 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 else
 	groupadd amdindicator
+	rm -f /etc/ld.so.conf.d/multiarchfix.conf
 	mkdir -p /usr/lib/amdindicator
+	mkdir -p /usr/i386-linux-gnu
+	ln -s /usr/lib/i386-linux-gnu/mesa /usr/i386-linux-gnu/mesa
 	cp 11switchable /etc/X11/Xsession.d/
 	chown root:root /etc/X11/Xsession.d/11switchable
 	chmod 644 /etc/X11/Xsession.d/11switchable
