@@ -1,13 +1,2 @@
-CFGSTRING=$(amdconfig --pxl)
-
-if [[ "$CFGSTRING" == *Discrete* ]]
-then
-	if [ -f /etc/ld.so.conf.d/multiarchfix.conf ]
-	then
-    		rm /etc/ld.so.conf.d/multiarchfix.conf
-		ldconfig
-	fi
-fi
-
 LIBGL_DRIVERS_PATH=${LIBGL_DRIVERS_PATH}:/usr/lib/x86_64-linux-gnu/dri:/usr/lib/i386-linux-gnu/dri
 export LIBGL_DRIVERS_PATH
