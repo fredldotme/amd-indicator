@@ -29,12 +29,23 @@ class AMDIndicator:
 	self.info_item.show()
 	self.seperator_item = gtk.SeparatorMenuItem()
 	self.seperator_item.show()
-	self.switch_item = gtk.MenuItem("Switch graphics ...")
-        self.switch_item.connect("activate", self.switch)
-        self.switch_item.show()
+	self.switch_item = gtk.MenuItem("Quick switch graphics ...")
+	self.switch_item.connect("activate", self.switch)
+	self.switch_item.show()
+	self.seperator2_item = gtk.SeparatorMenuItem()
+	self.seperator2_item.show()
+	self.ccc_item = gtk.MenuItem("Catalyst Control Center")
+        self.ccc_item.connect("activate", self.openccc)
+        self.ccc_item.show()
+	self.cccsu_item = gtk.MenuItem("Catalyst Control Center (Administrative)")
+        self.cccsu_item.connect("activate", self.opencccsu)
+        self.cccsu_item.show()
 	self.menu.append(self.info_item)
 	self.menu.append(self.seperator_item)
 	self.menu.append(self.switch_item)
+	self.menu.append(self.seperator2_item)
+	self.menu.append(self.ccc_item)
+	self.menu.append(self.cccsu_item)
 
     def setAdditionals(self):
 	if self.isIntegrated:
@@ -49,6 +60,12 @@ class AMDIndicator:
 	else:
 	    self.switchToIntegrated()
 	
+
+    def openccc(self, dude):
+	os.system("/usr/bin/amdcccle")
+
+    def opencccsu(self, dude):
+	os.system("/usr/bin/amdxdg-su -c /usr/bin/amdcccle")
 
     def showRebootDialog(self):
 	message = "The X server will restart now."
