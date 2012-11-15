@@ -10,11 +10,9 @@ a problem running 32 bit OpenGL applications/games on the integrated GPU with fg
 (Seriously, why would I even have to have the Radeon GPU running to play Counter Strike 1.6 under Wine?)
 
 How to install
-=============
+==============
 
 # Make the setup.sh file executable and run it using sudo
 
 chmod a+x setup.sh
 sudo ./setup.sh
-
-# Now add the amd-indicator script to your startup applications
