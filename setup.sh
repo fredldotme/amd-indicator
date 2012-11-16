@@ -4,6 +4,7 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 else
 	groupadd amdindicator
+	adduser $USER amdindicator
 	rm -f /etc/ld.so.conf.d/multiarchfix.conf
 	mkdir -p /usr/lib/amdindicator
 	mkdir -p /usr/i386-linux-gnu
