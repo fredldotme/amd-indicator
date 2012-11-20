@@ -40,5 +40,5 @@ else
 
 	read -n1 -p "Autostart AMD Indicator? (y/N) "
 	echo
-	[[ $REPLY = [yY] ]] && cp amd-indicator.desktop $HOME/.config/autostart || { rm $HOME/.config/autostart/amd-indicator.desktop; }
+	[[ $REPLY = [yY] ]] && cp amd-indicator.desktop $HOME/.config/autostart/ || { rm $HOME/.config/autostart/amd-indicator.desktop; }
 fi
