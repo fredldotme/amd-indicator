@@ -3,8 +3,6 @@ if [[ $EUID -ne 0 ]]; then
 	echo "This script must be run using sudo" 2>&1
 	exit 1
 else
-	groupadd amdindicator
-	adduser $USER amdindicator
 	rm -f /etc/ld.so.conf.d/multiarchfix.conf
 	mkdir -p /usr/lib/amdindicator
 	mkdir -p /usr/i386-linux-gnu
@@ -28,15 +26,8 @@ else
 	chown root:amdindicator /usr/lib/amdindicator/dgpuon
 	chmod a+x /usr/lib/amdindicator/igpuon
 	chmod a+x /usr/lib/amdindicator/dgpuon
-	SUDOERSTRING="%amdindicator ALL=NOPASSWD: /usr/lib/amdindicator/igpuon, /usr/lib/amdindicator/dgpuon"
-
-	if grep -Fxq "$SUDOERSTRING" /etc/sudoers
-	then
-    		echo "sudoer already set up"
-	else
-		echo "" >> /etc/sudoers
-		echo $SUDOERSTRING >> /etc/sudoers
-	fi
+	cp amd-indicator-sudoers /etc/sudoers.d/
+	chmod 644 /etc/sudoers.d/amd-indicator-sudoers
 
 	read -n1 -p "Autostart AMD Indicator? (y/N) "
 	echo
