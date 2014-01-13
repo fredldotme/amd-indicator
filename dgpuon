@@ -2,3 +2,4 @@
 amdconfig --px-dgpu
 sync
 pkill X
+reboot
