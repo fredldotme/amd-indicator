@@ -2,3 +2,4 @@
 amdconfig --px-igpu
 sync
 pkill X
+gnome-session-quit --logout --no-prompt
