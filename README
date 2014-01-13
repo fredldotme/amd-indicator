@@ -9,6 +9,11 @@ This indicator also features a workaround for people using 64 bit Ubuntu, which 
 a problem running 32 bit OpenGL applications/games on the integrated GPU with fglrx installed.
 (Seriously, why would I even have to have the Radeon GPU running to play Counter Strike 1.6 under Wine?)
 
+Prerequisites
+==============
+You have to have a few packages installed on your Ubuntu box to take advantage of this indicator.
+Make sure you have the AMD driver installed. In case the indicator doesn't start because it is missing the python module "appindicator", again, make sure to install missing packages.
+
 How to install
 ==============
 
