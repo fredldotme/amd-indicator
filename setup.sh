@@ -22,8 +22,8 @@ else
 	cp intel.png /usr/lib/amdindicator/
 	cp amd.png /usr/lib/amdindicator/
 	chmod a+r /usr/lib/amdindicator/*.png
-	chown root:amdindicator /usr/lib/amdindicator/igpuon
-	chown root:amdindicator /usr/lib/amdindicator/dgpuon
+	chown root:root /usr/lib/amdindicator/igpuon
+	chown root:root /usr/lib/amdindicator/dgpuon
 	chmod a+x /usr/lib/amdindicator/igpuon
 	chmod a+x /usr/lib/amdindicator/dgpuon
 	cp amd-indicator-sudoers /etc/sudoers.d/
