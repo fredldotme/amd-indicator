@@ -9,14 +9,12 @@ else
 	cp amd-indicator /usr/bin/
 	chown root:root /usr/bin/amd-indicator
 	chmod 755 /usr/bin/amd-indicator
+
 	if ! [[ -L /usr/i386-linux-gnu/mesa ]]
 	then
 		ln -s /usr/lib/i386-linux-gnu/mesa /usr/i386-linux-gnu/mesa
 	fi
-	# ln -s /usr/lib/i386-linux-gnu/mesa /usr/i386-linux-gnu/mesa
-	cp 11switchable /etc/X11/Xsession.d/
-	chown root:root /etc/X11/Xsession.d/11switchable
-	chmod 644 /etc/X11/Xsession.d/11switchable
+
 	cp igpuon /usr/lib/amdindicator/
 	cp dgpuon /usr/lib/amdindicator/
 	cp intel.png /usr/lib/amdindicator/
