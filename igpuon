@@ -1,5 +1,4 @@
 #!/bin/bash
 amdconfig --px-igpu
-sync
-pkill X
-gnome-session-quit --logout --no-prompt
+service lightdm stop
+service lightdm start
