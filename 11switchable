@@ -1,2 +1,0 @@
-LIBGL_DRIVERS_PATH=${LIBGL_DRIVERS_PATH}:/usr/lib/x86_64-linux-gnu/dri:/usr/lib/i386-linux-gnu/dri
-export LIBGL_DRIVERS_PATH
