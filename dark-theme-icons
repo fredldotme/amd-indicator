@@ -1,6 +1,6 @@
 #!/bin/bash
 # Get sudo password
-sudo_password="$( gksudo --print-pass --message 'Provide permission to make system changes:\nType your password or press Cancel.' -- : 2>/dev/null )"
+sudo_password="$( gksudo --print-pass --message 'Provide permission to make system changes: Type your password or press Cancel.' -- : 2>/dev/null )"
 # Check for null entry or cancellation.
 if [[ ${?} != 0 || -z ${sudo_password} ]]
 then
