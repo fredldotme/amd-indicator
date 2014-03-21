@@ -18,7 +18,7 @@ sudo apt-get install nvidia-prime nvidia-331 nvidia-settings python-appindicator
 How to install
 ==============
 
-# Make the setup.sh file executable and run it using sudo
+Make the setup.sh file executable and run it using sudo
 
 chmod a+x setup.sh
 sudo ./setup.sh
