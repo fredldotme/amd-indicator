@@ -1,9 +1,9 @@
 [Desktop Entry]
 Type=Application
-Exec=/usr/bin/amd-indicator
+Exec=/usr/local/bin/amd-indicator
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
 Name=AMD Indicator
-Comment=Simple indicator applet to switch between graphics cards on fglrx/Intel hybrid systems
+Comment=Simple indicator applet to switch between graphics cards on AMD/Intel hybrid systems
 Icon=display

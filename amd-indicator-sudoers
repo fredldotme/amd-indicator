@@ -1,1 +1,1 @@
-%sudo ALL=NOPASSWD: /usr/lib/amdindicator/igpuon, /usr/lib/amdindicator/dgpuon
+%sudo ALL=NOPASSWD: /usr/local/indicator-amd/igpuon, /usr/local/indicator-amd/dgpuon, /usr/local/indicator-amd/dark-theme-icons, /usr/local/indicator-amd/light-theme-icons

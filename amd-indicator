@@ -13,7 +13,7 @@ class AMDIndicator:
                                            appindicator.CATEGORY_APPLICATION_STATUS)
 	self.ind.set_status(appindicator.STATUS_ACTIVE)
 	self.ind.set_attention_icon("indicator-messages-new")
-	self.ind.set_icon_theme_path("/usr/lib/amdindicator/")
+	self.ind.set_icon_theme_path("/usr/local/indicator-amd/")
 	self.isIntegrated = self.checkIntegrated()
 	self.ind.set_icon('intel')
 	if not self.isIntegrated:
@@ -40,12 +40,23 @@ class AMDIndicator:
 	self.cccsu_item = gtk.MenuItem("Catalyst Control Center (Admin)")
         self.cccsu_item.connect("activate", self.opencccsu)
         self.cccsu_item.show()
+	self.seperator3_item = gtk.SeparatorMenuItem()
+	self.seperator3_item.show()
+	self.DarkTheme_item = gtk.MenuItem("Use dark theme icons")
+        self.DarkTheme_item.connect("activate", self.DarkTheme)
+        self.DarkTheme_item.show()
+	self.LightTheme_item = gtk.MenuItem("Use light theme icons")
+        self.LightTheme_item.connect("activate", self.LightTheme)
+        self.LightTheme_item.show()
 	self.menu.append(self.info_item)
 	self.menu.append(self.seperator_item)
 	self.menu.append(self.switch_item)
 	self.menu.append(self.seperator2_item)
 	self.menu.append(self.ccc_item)
 	self.menu.append(self.cccsu_item)
+	self.menu.append(self.seperator3_item)
+	self.menu.append(self.DarkTheme_item)
+	self.menu.append(self.LightTheme_item)
 
     def setAdditionals(self):
 	if self.isIntegrated:
@@ -59,7 +70,12 @@ class AMDIndicator:
 	    self.switchToDiscrete()
 	else:
 	    self.switchToIntegrated()
-	
+
+    def DarkTheme(self, dude):
+	os.system("sudo /usr/local/indicator-amd/dark-theme-icons && /usr/local/indicator-amd/restart")
+
+    def LightTheme(self, dude):
+	os.system("sudo /usr/local/indicator-amd/light-theme-icons && /usr/local/indicator-amd/restart")
 
     def openccc(self, dude):
 	os.system("/usr/bin/amdcccle")
@@ -93,10 +109,10 @@ class AMDIndicator:
 	return out
 
     def switchToIntegrated(self):
-	os.system("sudo /usr/lib/amdindicator/igpuon")
+	os.system("sudo /usr/local/indicator-amd/igpuon")
 
     def switchToDiscrete(self):
-	os.system("sudo /usr/lib/amdindicator/dgpuon")
+	os.system("sudo /usr/local/indicator-amd/dgpuon")
 
     def main(self):
         gtk.main()
