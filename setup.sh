@@ -39,3 +39,4 @@ else
 	chmod 644 /etc/sudoers.d/amd-indicator-sudoers
 	cp -f amd-indicator.desktop /etc/xdg/autostart/
 	cp -f amd-indicator.desktop /usr/share/applications/
+fi
