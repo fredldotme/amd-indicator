@@ -30,3 +30,5 @@ Make the `setup.sh` file executable and run it using `sudo`, entering the follow
 chmod a+x setup.sh
 sudo ./setup.sh
 ```
+
+| **Alternatively, you might also like to use the DEB file provided.** |
