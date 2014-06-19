@@ -6,7 +6,7 @@ AMD Indicator
 This indicator applet allows owners of laptops with AMD/Intel hybrid graphics capabilities to
 easily switch between the graphics cards without the need of running CCC or terminal commands.
 
-![screenshot](https://github.com/beidl/amd-indicator/blob/master/amd-indicator-screenshot.png)
+![screenshot](amd-indicator-screenshot.png)
 
 Prerequisites
 ==============
@@ -14,7 +14,7 @@ Prerequisites
 You have to have a few packages installed to take advantage of this indicator.
 Make sure you have the AMD driver. In case the indicator doesn't start because it is missing the python module "appindicator", again, make sure to install missing packages. To install all needed dependencies, enter the following command in terminal:
 
-|`sudo apt-get install fglrx python-appindicator`
+```sudo apt-get install fglrx python-appindicator```
 
 How to install
 ==============
