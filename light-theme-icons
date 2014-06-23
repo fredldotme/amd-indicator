@@ -1,2 +1,3 @@
 #!/bin/bash
 sudo cp -f /usr/local/indicator-amd/amd-light.png /usr/local/indicator-amd/amd.png
+sudo cp -f /usr/local/indicator-amd/intel-light.png /usr/local/indicator-amd/intel.png
