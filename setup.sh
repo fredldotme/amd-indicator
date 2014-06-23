@@ -25,6 +25,12 @@ else
 	cp igpuon /usr/local/indicator-amd/
 	chown root:root /usr/local/indicator-amd/igpuon
 	chmod a+x /usr/local/indicator-amd/igpuon
+	cp dark-theme-icons /usr/local/indicator-amd/
+	chown root:root /usr/local/indicator-amd/dark-theme-icons
+	chmod a+x /usr/local/indicator-amd/dark-theme-icons
+	cp light-theme-icons /usr/local/indicator-amd/
+	chown root:root /usr/local/indicator-amd/light-theme-icons
+	chmod a+x /usr/local/indicator-amd/light-theme-icons
 	cp restart /usr/local/indicator-amd/
 	chown root:root /usr/local/indicator-amd/restart
 	chmod a+x /usr/local/indicator-amd/restart
