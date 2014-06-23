@@ -1,5 +1,9 @@
 #!/bin/bash
 amdconfig --px-dgpu
-sync
-pkill X
-reboot
+service lightdm stop
+service lightdm start
+# for old drivers requiring reboot:
+# sync
+# pkill X
+# reboot
+
